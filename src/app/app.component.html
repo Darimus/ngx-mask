@@ -1,0 +1,65 @@
+<form [formGroup]="form" class="container">
+  <h1>Formulário</h1>
+  <div class="mb-3">
+    <label for="cpf-input" class="form-label"> CPF: </label>
+    <input
+      [class.is-invalid]="cpf.touched && cpf.invalid"
+      [validation]="false"
+      formControlName="cpf"
+      class="form-control"
+      id="cpf-input"
+      inputmode="numeric"
+      mask="CPF_CNPJ"
+      placeholder="CPF"
+      type="text"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="tel-input" class="form-label"> Tel: </label>
+    <input
+      [class.is-invalid]="tel.touched && tel.invalid"
+      formControlName="tel"
+      class="form-control"
+      id="tel-input"
+      mask="(00) 0 0000 0000"
+      prefix="+55 "
+      type="tel"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="ip-input" class="form-label"> IP: </label>
+    <input
+      formControlName="ip"
+      class="form-control"
+      id="ip-input"
+      inputmode="numeric"
+      mask="IP"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="data-input" class="form-label"> Data: </label>
+    <input
+      formControlName="data"
+      [dropSpecialCharacters]="true"
+      class="form-control"
+      id="data-input"
+      inputmode="numeric"
+      mask="d0/M0/0000"
+    />
+  </div>
+  <button [disabled]="form.invalid" type="submit" class="btn btn-primary">
+    Enviar
+  </button>
+</form>
+
+<div class="container">
+  <div class="border mt-4">
+    <p class="p-4">
+      Valor do formulário (form.value):
+      <br />
+      <br />
+
+      {{ form.value | json }}
+    </p>
+  </div>
+</div>
